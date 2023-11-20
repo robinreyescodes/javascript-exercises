@@ -58,7 +58,49 @@ borderDiv.appendChild(imAP);
 
 container.appendChild(borderDiv);
 
+// ----- EVENTS -----
+// another way of making a button but completely in javascript
+// Seperation of concerns!!
+// Keep HTML in HTML and javascript in js
+const button = document.createElement("button");
+button.textContent = "Click me...";
+button.onclick = () => alert("hello world");
+container.appendChild(button);
+
+//most common way...add event listener
+const btn = document.querySelector("#btn3");
+btn.addEventListener("click", () => {
+    alert("hello bittch");
+})
 
 
+//another way of doing it...using callbacks!
+const btn1 = document.querySelector("#btn1");
+const btn4 = document.querySelector("#btn4");
+const btn5 = document.querySelector("#btn5");
+
+//method 2 - does not include the (), because you're not calling it right away
+btn4.onclick = alertMeFunction;
+
+//method3
+btn5.addEventListener("click", alertMeFunction);
+
+function alertMeFunction() {
+    alert("what up hoe");
+}
+
+btn4.addEventListener("click", (e) => {
+    console.log(e.target);
+    e.target.style.background = "blue";
+})
 
 
+// --- multiple items with the same event
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach(button => {
+    button.addEventListener("dblclick", (e) => {
+        console.log(e.target);
+        console.log('just clicked a button');
+    })
+})
